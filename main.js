@@ -19,4 +19,13 @@ loginForm.addEventListener("submit", (e) => {
     localStorage.setItem('fullName',fullName);
     localStorage.setItem('email',eMail);
     localStorage.setItem('subject',subject);
+
+    let user_details = {
+        name: fullName,
+        email_id : eMail,
+        subject_opted : subject
+    };
+
+    user_details_serialized = JSON.stringify(user_details);
+    console.log(user_details_serialized);
   });
