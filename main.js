@@ -16,9 +16,9 @@ loginForm.addEventListener("submit", (e) => {
     var i = x.selectedIndex;
     subject = document.getElementById("subject").innerHTML = x.options[i].text;
 
-    localStorage.setItem('fullName',fullName);
-    localStorage.setItem('email',eMail);
-    localStorage.setItem('subject',subject);
+    // localStorage.setItem('fullName',fullName);
+    // localStorage.setItem('email',eMail);
+    // localStorage.setItem('subject',subject);
 
     let user_details = {
         name: fullName,
@@ -28,4 +28,6 @@ loginForm.addEventListener("submit", (e) => {
 
     user_details_serialized = JSON.stringify(user_details);
     console.log(user_details_serialized);
+
+    localStorage.setItem(eMail,user_details_serialized);
   });
