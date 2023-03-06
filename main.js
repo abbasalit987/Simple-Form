@@ -42,6 +42,18 @@ function save(event) {
         localStorage.removeItem(user_details.email_id);
         parentElem.removeChild(childElem);
     }
+    const editBtn = document.createElement('input');
+    editBtn.type = 'button'
+    editBtn.value = 'Edit'
+    editBtn.onclick = () => {
+        document.getElementById('firstName').value = user_details.name.split(' ')[0];
+        document.getElementById('lastName').value = user_details.name.split(' ')[1];
+        document.getElementById('eMail').value = user_details.email_id;
+        document.getElementById('subject').value = user_details.subject_opted;
+        localStorage.removeItem(user_details.email_id);
+        parentElem.removeChild(childElem);
+    }
+    childElem.appendChild(editBtn);
     childElem.appendChild(deleteBtn);
     parentElem.appendChild(childElem);
   }
