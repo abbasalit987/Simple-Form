@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 <body>
-    <form action="" id="loginForm" >
+    <form onsubmit="save(event)" id="loginForm" >
         <ul class="form-style-1">
             <li><label>Full Name <span class="required">*</span></label>
                 <input type="text" id="firstName" name="field1" class="field-divided" placeholder="First"/> 
@@ -34,6 +34,8 @@
             </li>
         </ul>
         </form>
+
+        <ul id = "users"></ul>
     <script src="main.js"> </script>
 </body>
 </html>
