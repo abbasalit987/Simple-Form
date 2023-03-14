@@ -58,8 +58,15 @@ function save(event) {
     deleteBtn.type = 'button'
     deleteBtn.value = 'Delete'
     deleteBtn.onclick = () => {
-        localStorage.removeItem(user_details.email_id);
-        parentElem.removeChild(childElem);
+        //localStorage.removeItem(user_details.email_id);
+        
+        axios.delete(`https://crudcrud.com/api/8c68a65aa00d4f6d84c814df31061729/userinfo/${user_details._id}`)
+            .then(() => {
+                parentElem.removeChild(childElem);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
     const editBtn = document.createElement('input');
     editBtn.type = 'button'
