@@ -23,9 +23,16 @@ function save(event) {
     };
 
     user_details_serialized = JSON.stringify(user_details);
-    console.log(user_details_serialized);
-
-    localStorage.setItem(eMail,user_details_serialized);
+    //console.log(user_details_serialized);
+    axios.post("https://crudcrud.com/api/8c68a65aa00d4f6d84c814df31061729/userinfo", user_details)
+    .then((response) => {
+        console.log(response);
+        addUser(response.data);
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+    //localStorage.setItem(eMail,user_details_serialized);
     addUser(user_details);
   }
 
