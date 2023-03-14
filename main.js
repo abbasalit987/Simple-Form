@@ -2,6 +2,18 @@ console.log('Hello World!');
 // console.log(document.getElementsByName('field1'));
 
 let loginForm = document.getElementById("loginForm");
+
+window.addEventListener("DOMContentLoaded", () => {
+    axios.get("https://crudcrud.com/api/8c68a65aa00d4f6d84c814df31061729/userinfo")
+        .then((resp) => {
+            console.log(resp)
+            for (let i =0; i<resp.data.length; i++){
+                addUser(resp.data[i])
+            }
+        })
+        .catch((err) => console.log(err))
+})
+
 function save(event) {
     
     event.preventDefault();
@@ -33,7 +45,7 @@ function save(event) {
         console.log(err);
     })
     //localStorage.setItem(eMail,user_details_serialized);
-    addUser(user_details);
+    //addUser(user_details);
   }
 
   function addUser(user_details) {
