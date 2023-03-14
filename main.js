@@ -72,12 +72,28 @@ function save(event) {
     editBtn.type = 'button'
     editBtn.value = 'Edit'
     editBtn.onclick = () => {
-        document.getElementById('firstName').value = user_details.name.split(' ')[0];
-        document.getElementById('lastName').value = user_details.name.split(' ')[1];
-        document.getElementById('eMail').value = user_details.email_id;
-        document.getElementById('subject').value = user_details.subject_opted;
-        localStorage.removeItem(user_details.email_id);
-        parentElem.removeChild(childElem);
+        
+        //localStorage.removeItem(user_details.email_id);
+        //parentElem.removeChild(childElem);
+        axios.delete(`https://crudcrud.com/api/8c68a65aa00d4f6d84c814df31061729/userinfo/${user_details._id}`)
+            .then((response) => {
+                document.getElementById('firstName').value = user_details.name.split(' ')[0];
+                document.getElementById('lastName').value = user_details.name.split(' ')[1];
+                document.getElementById('eMail').value = user_details.email_id;
+                document.getElementById('subject').value = user_details.subject_opted;
+                parentElem.removeChild(childElem);
+                axios.post("https://crudcrud.com/api/8c68a65aa00d4f6d84c814df31061729/userinfo", user_details)
+                    .then((response) => {
+                        console.log(response);
+                        addUser(response.data);
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    })
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
     childElem.appendChild(editBtn);
     childElem.appendChild(deleteBtn);
